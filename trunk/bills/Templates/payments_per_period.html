@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML dir="rtl">
+ <HEAD>
+  <TITLE> תשלומים </TITLE>
+  {# for django admin calendar widget #}
+  <script type="text/javascript" src="/my_admin/jsi18n/"></script>
+  <script type="text/javascript" src="/media/admin/js/core.js"></script>
+  {{ form.media }}
+  <link rel="stylesheet" type="text/css" href="/media/css/base.css" />
+	<style type="text/css" media="screen">
+	  ul {
+		margin: 0;
+		padding: 0;
+		width: 190px;
+		background-color: #fff;
+	  }
+	  
+	  ul li {
+		font-size: 11px;
+		line-height: 20px;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		border-bottom: 1px solid #ebeff2;
+		background-color: #fff;
+	  }
+	 
+	 ul li span {
+		background-color: #a9d2f2;
+		display: block;
+		color: #125a95;
+		font-weight: bold;
+		padding: 0 0 0 5px;
+		white-space: nowrap;
+	  }
+	</style>
+</HEAD>
+
+ <BODY>
+ <div id="header">
+	<div id="branding">
+		<h1>סיכום תשלומים בתקופה {{start_date}}-{{end_date}}</h1>
+		<form method="post" action="submit/">
+		{{dateForm}}
+		<input name="dateForm" type="submit" value="Change"/>
+		</form>
+	</div>
+ </div>
+ <table>
+ <tr><td colspan=3><h1>סה"כ הוצאות בתקופה {{total|floatformat:2}} ש"ח</h1></td></tr>
+ <tr>
+  <td>
+	 <h1>תשלומים בתקופה</h1>
+	 <table border=2>
+	 <thead>
+		<td><h2>התשלום</h2></td>
+		<td><h2>מי שילם</h2></td>
+		<td><h2>הסכום לתשלום</h2></td>
+		<td colspan=2><h2>תקופת התשלום</h2></td>
+		<td><h2>הסכום לתשלום בתקופה הרלוונטית</h2></td>
+	</thead>
+	 {% for payment in payments %}	
+		 <tr class="{% cycle row1,row2 %}">
+			<td>{{payment.name}}</td>
+			<td>{{payment.who_paid}}</td>
+			<td>{{payment.price|floatformat:2}} ש"ח</td>
+			<td>{{payment.start_date}}</td>
+			<td>{{payment.end_date}}</td>
+			<td>{{payment.cost|floatformat:2}} ש"ח</td>
+		</tr>
+	 {% endfor %}
+	 </table>
+ </td>
+ </tr>
+ <tr>
+ <td>
+	<h1>חובות הדיירים</h1>
+	<table border=2>
+	<thead>
+		<td><h2>שם</h2></td>
+		<td colspan=2><h2>תקופת המגורים</h2></td>
+		<td><h2>חובות בתקופה הרלוונטית</h2></td>
+		<td><h2>שילם בתקופה הרלוונטית</h2></td>
+		<td><h2>חייב לשותפיו</h2></td>
+	</thead>
+	{% for tenant in tenants %}
+		<tr class="{% cycle row1,row2 %}">
+			<td>{{tenant.name}}</td>
+			<td>{{tenant.lease_start}}</td>
+			<td>{{tenant.lease_end}}</td>
+			<td>{{tenant.costs|floatformat:2}} ש"ח</td>
+			<td>{{tenant.payed|floatformat:2}} ש"ח</td>
+			<td><span dir="ltr">{{tenant.debts|floatformat:2}}</span> ש"ח</td>
+		</tr>
+	{% endfor %}
+	</table>
+ </td>
+ </tr>
+ </table>
+ </BODY>
+</HTML>
