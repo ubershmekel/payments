@@ -1,4 +1,4 @@
-# Django settings for Bills project.
+# Django settings for payments project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,7 +10,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = r'c:\code\bills\db'             # Or path to database file if using sqlite3.
+DATABASE_NAME = r'c:\code\payments\db'             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -63,10 +63,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'Bills.urls'
+ROOT_URLCONF = 'payments.urls'
 
 TEMPLATE_DIRS = (
-    'c:/code/bills/bills/templates',
+    'c:/code/payments/bills/templates',
 )
 
 INSTALLED_APPS = (
@@ -75,5 +75,5 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'Bills.bills',
+    'payments.bills',
 )

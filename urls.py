@@ -14,11 +14,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
 
-    (r'^xmedia/(?P<path>.*)$', 'django.views.static.serve', {'document_root': r'c:\code\Bills\xmedia'}),
+    (r'^xmedia/(?P<path>.*)$', 'django.views.static.serve', {'document_root': r'c:\code\payments\xmedia'}),
 
-	(r'^$', 'Bills.bills.views.index'),
+	(r'^$', 'payments.bills.views.index'),
 	
-    (r'^amount_per_period/(?P<start_date>\d{1,2}-\d{1,2}-\d{4})-(?P<end_date>\d{1,2}-\d{1,2}-\d{4})/$', 'Bills.bills.views.paymentsForPeriod'),
-	(r'^(?:amount_per_period/\d{1,2}-\d{1,2}-\d{4}-\d{1,2}-\d{1,2}-\d{4}/)?submit/$', 'Bills.bills.views.changeDate'),
+    (r'^amount_per_period/(?P<start_date>\d{1,2}-\d{1,2}-\d{4})-(?P<end_date>\d{1,2}-\d{1,2}-\d{4})/$', 'payments.bills.views.paymentsForPeriod'),
+	(r'^(?:amount_per_period/\d{1,2}-\d{1,2}-\d{4}-\d{1,2}-\d{1,2}-\d{4}/)?submit/$', 'payments.bills.views.changeDate'),
 )
 	
