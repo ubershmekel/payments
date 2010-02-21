@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Sum
-
+from datetime import datetime
 
 class Tenant(models.Model):
     name = models.CharField(max_length = 30)
@@ -26,7 +26,7 @@ class Payment(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     who_paid = models.ForeignKey(Tenant)
-    entry_date = models.DateTimeField(auto_now_add = True)
+    entry_date = models.DateTimeField(auto_now_add = True, default = datetime.now())
     
     def __unicode__(self):
         return self.name

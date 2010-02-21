@@ -76,4 +76,5 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'payments.bills',
+    'django_evolution',
 )
