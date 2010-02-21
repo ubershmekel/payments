@@ -1,2 +1,2 @@
-start python25 manage.py runserver
+start cmd /c serve.bat
 start http://localhost:8000

@@ -140,7 +140,8 @@ class PaymentSummary:
 			
 	def _calculate_debts(self):
 		for tenant in self.tenants:
-			tenant.debts = tenant.costs - tenant.payed
+			tenant.debts = tenant.costs - tenant.payed + tenant.cash_balance
+			
 
 	def _enrich_payments(self, payments):
 		for payment in payments:

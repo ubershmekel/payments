@@ -81,6 +81,7 @@
 		<td colspan=2><h2>תקופת המגורים</h2></td>
 		<td><h2>חובות בתקופה הרלוונטית</h2></td>
 		<td><h2>שילם בתקופה הרלוונטית</h2></td>
+		<td><h2>מאזן מזומנים</h2></td>
 		<td><h2>חייב לשותפיו</h2></td>
 	</thead>
 	{% for tenant in tenants %}
@@ -90,6 +91,7 @@
 			<td>{{tenant.lease_end}}</td>
 			<td>{{tenant.costs|floatformat:2}} ש"ח</td>
 			<td>{{tenant.payed|floatformat:2}} ש"ח</td>
+			<td>{{tenant.cash_balance|floatformat:2}} ש"ח</td>
 			<td><span dir="ltr">{{tenant.debts|floatformat:2}}</span> ש"ח</td>
 		</tr>
 	{% endfor %}
